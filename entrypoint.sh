@@ -52,7 +52,7 @@ echo "To run gollum as a rack application, place the app's files in"
 echo "the wiki repository, then run it, i.e.:"
 echo "   $ docker run -d -p 4567:4567 \\"
 echo "       -v /home/elvis/mywiki:/root/wiki \\"
-echo "       genebarker/deb8gollum ruby myapp.rb"
+echo "       genebarker/deb8gollum ruby gollumrack.rb"
 echo
 echo "To bypass script, just enter desired command, i.e.:"
 echo "   $ docker run -i -t genebarker/deb8gollum /bin/bash"
