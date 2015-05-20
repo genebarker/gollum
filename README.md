@@ -27,7 +27,7 @@ To run gollum as a rack application, place the app's files in
 the wiki repository, then run it, i.e.:
    $ docker run -d -p 4567:4567 \
        -v /home/elvis/mywiki:/root/wiki \
-       genebarker/deb8gollum ruby myapp.rb
+       genebarker/deb8gollum ruby gollumrack.rb
 
 To bypass script, just enter desired command, i.e.:
    $ docker run -i -t genebarker/deb8gollum /bin/bash
