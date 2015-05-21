@@ -1,12 +1,16 @@
 deb8gollum
 ----------
-This docker image is a Gollum wiki on Debian 8 (Jessie). It also includes an option with an example `gollumrack.rb` for running Gollum as a rack application.
+Gollum wiki on Debian 8 (Jessie) with the option to run as a rack application.
 
 For usage info, just run the image without a command:
 
-    $ docker run --rm genebarker/deb8gollum
-
+```text
+$ docker run --rm genebarker/deb8gollum
 ```
+
+Which produces the following:
+
+```text
 usage: genebarker/deb8gollum <command> [<args>]
 
 The available commands are:
@@ -32,3 +36,5 @@ the wiki repository, then run it, i.e.:
 To bypass script, just enter desired command, i.e.:
    $ docker run -i -t genebarker/deb8gollum /bin/bash
 ```
+
+**NOTE:** For a rack application, see the example `gollumrack.rb`, and be sure to append its required packages and gems to the respective RUN commands in the `Dockerfile`.

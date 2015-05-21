@@ -1,15 +1,15 @@
 #----------------------------------------------------------------------
-# deb8gollum - Gollum wiki on Debian Jessie
-#              (includes option to run as a rack application)
+# deb8gollum - Gollum wiki on Debian 8 (Jessie) with option to run as
+#              a rack application.
 #
 # Version 0.4
 #
 # For usage info, just run the image without a command:
 #   $ docker run --rm genebarker/deb8gollum
 #
-# For a rack app, see the example (gollumrack.rb), and be sure to
-# append its required packages and gems to the respective RUN commands
-# below.
+# For a rack application, see the example (gollumrack.rb), and be sure
+# to append its required packages and gems to the respective RUN
+# commands below.
 #----------------------------------------------------------------------
 
 FROM debian:8.0
