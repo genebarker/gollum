@@ -18,24 +18,25 @@ MAINTAINER Eugene F. Barker <genebarker@gmail.com>
 
 # install dependencies
 RUN apt-get update && apt-get install -y \
-  ruby \
-  ruby-dev \
-  libz-dev \
-  libicu-dev \
-  build-essential \
-  git
+    build-essential \
+    git \
+    libicu-dev \
+    libz-dev \
+    ruby \
+    ruby-dev
 
 # install gollum
 RUN gem install gollum
 
-# expose default port
-EXPOSE 4567
-
 # initialize wiki content
-RUN mkdir /root/wiki
-RUN git init /root/wiki
+RUN mkdir /root/wiki && \
+    git init /root/wiki
 
 # copy in smart entrypoint script
 COPY ./entrypoint.sh /
+
 # set entry point
 ENTRYPOINT ["/entrypoint.sh"]
+
+# expose default port
+EXPOSE 4567
