@@ -29,7 +29,7 @@ if [ "$#" != "0" ]; then
             exec gollum "$@"
             exit
         else
-            # start as rack app using provided arg's
+            # start as rack app
             cd $GROOT
             exec rackup $RACK_APP -p 4567
             exit
@@ -78,7 +78,7 @@ if [ "$#" != "0" ]; then
             exec gollum "$@"
             exit
         else
-            # start as rack app using provided arg's
+            # start as rack app
             cd $GROOT
             exec rackup $RACK_APP -p 4567
             exit
