@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------
-# deb8gollum - a Gollum webapp on Debian 8 Docker Container
+# gollum - a Gollum webapp on Debian 8 Docker Container
 #
 # For usage info, just run the image without a command:
-#   $ docker run --rm genebarker/deb8gollum
+#   $ docker run --rm genebarker/gollum
 #
 # For a rack application, see the example (config.ru), and be sure
 # to append its required packages and gems to the respective RUN

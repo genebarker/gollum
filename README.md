@@ -5,15 +5,15 @@ Gollum
 For usage info, just run the image without a command:
 
 ```text
-$ docker run --rm genebarker/deb8gollum
+$ docker run --rm genebarker/gollum
 ```
 
 Which produces the following:
 
 ```text
-deb8gollum - a Gollum webapp on Debian 8 Docker Container
+gollum - a Gollum webapp on Debian 8 Docker Container
 
-usage: genebarker/deb8gollum [OPTION]
+usage: genebarker/gollum [OPTION]
 
 The available OPTIONs are:
    --http [GOLLUMOPTION]...       Run FA using plain HTTP
@@ -24,16 +24,16 @@ The available OPTIONs are:
 To use wiki repository on the host, mount it, i.e.:
    $ docker run -d -p 80:80 \
        -v /home/me/wiki:/root/wiki \
-       genebarker/deb8gollum --http
+       genebarker/gollum --http
 
 To run with strict HTTPS creating new self-signed keys:
    $ docker run -d -p 80:80 -p 443:443 \
-       genebarker/deb8gollum --hsts mybox.example.com
+       genebarker/gollum --hsts mybox.example.com
 
 To run with strict HTTPS using your own keys, mount them, i.e.:
    $ docker run -d -p 80:80 -p 443:443 \
        -v /etc/ssl:/etc/ssl \
-       genebarker/deb8gollum --hsts mybox.example.com
+       genebarker/gollum --hsts mybox.example.com
 
    (the cert's CN must match the FQDN)
 
@@ -41,10 +41,10 @@ To run as a rack application, place your config file in the repo,
 and set the RACK_APP env variable to its name, i.e.:
    $ docker run -d -p 80:80 \
        -e RACK_APP=config.ru
-       genebarker/deb8gollum --http
+       genebarker/gollum --http
 
 To bypass script, just enter desired command, i.e.:
-   $ docker run -it genebarker/deb8gollum bash
+   $ docker run -it genebarker/gollum bash
 
 Key paths in the container:
    /root/wiki     - Wiki content (a git repository)

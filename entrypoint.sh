@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-echo "deb8gollum - a Gollum webapp on Debian 8 Docker Container"
+echo "gollum - a Gollum webapp on Debian 8 Docker Container"
 
 GROOT="/root/wiki"
 WEBROOT="/var/www/html"
@@ -92,7 +92,7 @@ if [ "$#" != "0" ]; then
 fi
 
 echo
-echo "usage: genebarker/deb8gollum [OPTION]"
+echo "usage: genebarker/gollum [OPTION]"
 echo
 echo "The available OPTIONs are:"
 echo "   --http [GOLLUMOPTION]...       Run FA using plain HTTP"
@@ -103,16 +103,16 @@ echo
 echo "To use wiki repository on the host, mount it, i.e.:"
 echo "   $ docker run -d -p 80:80 \\"
 echo "       -v /home/me/wiki:/root/wiki \\"
-echo "       genebarker/deb8gollum --http"
+echo "       genebarker/gollum --http"
 echo
 echo "To run with strict HTTPS creating new self-signed keys:"
 echo "   $ docker run -d -p 80:80 -p 443:443 \\"
-echo "       genebarker/deb8gollum --hsts mybox.example.com"
+echo "       genebarker/gollum --hsts mybox.example.com"
 echo
 echo "To run with strict HTTPS using your own keys, mount them, i.e.:"
 echo "   $ docker run -d -p 80:80 -p 443:443 \\"
 echo "       -v /etc/ssl:/etc/ssl \\"
-echo "       genebarker/deb8gollum --hsts mybox.example.com"
+echo "       genebarker/gollum --hsts mybox.example.com"
 echo
 echo "   (the cert's CN must match the FQDN)"
 echo
@@ -120,10 +120,10 @@ echo "To run as a rack application, place your config file in the repo,"
 echo "and set the RACK_APP env variable to its name, i.e.:"
 echo "   $ docker run -d -p 80:80 \\"
 echo "       -e RACK_APP=config.ru"
-echo "       genebarker/deb8gollum --http"
+echo "       genebarker/gollum --http"
 echo
 echo "To bypass script, just enter desired command, i.e.:"
-echo "   $ docker run -it genebarker/deb8gollum bash"
+echo "   $ docker run -it genebarker/gollum bash"
 echo
 echo "Key paths in the container:"
 echo "   /root/wiki     - Wiki content (a git repository)"
