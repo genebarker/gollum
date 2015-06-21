@@ -53,7 +53,5 @@ Key paths in the container:
    /etc/ssl/certs/ssl-cert-snakeoil.pem    - Public SSL cert
 ```
 
-**NOTE:** For a rack application, see the example `config.ru`, and be sure to append its required packages and gems to the respective RUN commands in the `Dockerfile`.
-
 [Gollum]:https://github.com/gollum/gollum
 [HSTS]:http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security
