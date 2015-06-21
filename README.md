@@ -16,8 +16,8 @@ gollum - a Gollum webapp on Debian 8 Docker Container
 usage: genebarker/gollum [OPTION]
 
 The available OPTIONs are:
-   --http [GOLLUMOPTION]...       Run FA using plain HTTP
-   --hsts FQDN [GOLLUMOPTION]...  Run FA using HTTPS only
+   --http [GOLLUMOPTION]...       Run Gollum using plain HTTP
+   --hsts FQDN [GOLLUMOPTION]...  Run Gollum using HTTPS only
           (must provide FQDN, i.e. mybox.example.com)
    --help                         Display this message
 
@@ -38,7 +38,7 @@ To run with strict HTTPS using your own keys, mount them, i.e.:
    (the cert's CN must match the FQDN)
 
 To run as a rack application, place your config file in the repo,
-and set the RACK_APP env variable to its name, i.e.:
+and set the RACK_APP environment variable to its name, i.e.:
    $ docker run -d -p 80:80 \
        -e RACK_APP=config.ru
        genebarker/gollum --http

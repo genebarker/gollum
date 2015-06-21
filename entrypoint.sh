@@ -95,8 +95,8 @@ echo
 echo "usage: genebarker/gollum [OPTION]"
 echo
 echo "The available OPTIONs are:"
-echo "   --http [GOLLUMOPTION]...       Run FA using plain HTTP"
-echo "   --hsts FQDN [GOLLUMOPTION]...  Run FA using HTTPS only"
+echo "   --http [GOLLUMOPTION]...       Run Gollum using plain HTTP"
+echo "   --hsts FQDN [GOLLUMOPTION]...  Run Gollum using HTTPS only"
 echo "          (must provide FQDN, i.e. mybox.example.com)"
 echo "   --help                         Display this message"
 echo
@@ -117,7 +117,7 @@ echo
 echo "   (the cert's CN must match the FQDN)"
 echo
 echo "To run as a rack application, place your config file in the repo,"
-echo "and set the RACK_APP env variable to its name, i.e.:"
+echo "and set the RACK_APP environment variable to its name, i.e.:"
 echo "   $ docker run -d -p 80:80 \\"
 echo "       -e RACK_APP=config.ru"
 echo "       genebarker/gollum --http"
