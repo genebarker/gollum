@@ -23,8 +23,8 @@ RUN apt-get update && apt-get install -y \
     ruby \
     ruby-dev
 
-# install gollum
-RUN gem install gollum
+# install gollum & GitHub Flavored Markdown
+RUN gem install gollum github-markdown
 
 # initialize wiki content
 RUN mkdir /root/wiki && \
