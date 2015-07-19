@@ -3,8 +3,6 @@ set -e
 echo "gollum - a Gollum webapp on Debian 8 Docker Container"
 
 GROOT="/root/wiki"
-WEBROOT="/var/www/html"
-OLDINDEX="/root/oldfiles/index.html"
 OLDKEY="/root/oldfiles/ssl-cert-snakeoil.key"
 OLDCERT="/root/oldfiles/ssl-cert-snakeoil.pem"
 SSLKEY="/etc/ssl/private/ssl-cert-snakeoil.key"
