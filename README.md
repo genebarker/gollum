@@ -72,7 +72,7 @@ $ cd mywiki
 $ git init
 ```
 
-(2) Add a starter document the repository *(optional)*:
+(2) Add a starter document to the repository *(optional)*:
 
 ```text
 $ echo "Hello World!" > Home.md
