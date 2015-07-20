@@ -115,8 +115,9 @@ echo
 echo "   (the cert's CN must match the FQDN)"
 echo
 echo "To run as a rack application, place your config file in the repo,"
-echo "and set the RACK_APP environment variable to its name, i.e.:"
+echo "mount it, and set the RACK_APP environment variable to its name:"
 echo "   $ docker run -d -p 80:80 \\"
+echo "       -v /home/me/wiki:/root/wiki \\"
 echo "       -e RACK_APP=config.ru"
 echo "       genebarker/gollum --http"
 echo

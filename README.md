@@ -38,8 +38,9 @@ To run with strict HTTPS using your own keys, mount them, i.e.:
    (the cert's CN must match the FQDN)
 
 To run as a rack application, place your config file in the repo,
-and set the RACK_APP environment variable to its name, i.e.:
+mount it, and set the RACK_APP environment variable to its name:
    $ docker run -d -p 80:80 \
+       -v /home/me/wiki:/root/wiki \
        -e RACK_APP=config.ru
        genebarker/gollum --http
 
