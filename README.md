@@ -54,10 +54,38 @@ Key paths in the container:
    /etc/ssl/certs/ssl-cert-snakeoil.pem    - Public SSL cert
 ```
 
-###Notes:
+### Notes ###
 
 - This image uses GitHub Flavored Markdown ([GFM]).
 - For a rack application, see the example `config.ru`, and be sure to append its required packages and gems to the respective RUN commands in the `Dockerfile`.
+- To use the timezone settings of the host, mount the `localtime` and `timezone` files, i.e. on Debian hosts:
+    `-v /etc/localtime:/etc/localtime -v /etc/timezone:/etc/timezone`
+
+### Quick Start ###
+
+(1) Create a Git repository for your wiki:
+
+```text
+$ cd
+$ mkdir mywiki
+$ cd mywiki
+$ git init
+```
+
+(2) Add a starter document the repository *(optional)*:
+
+```text
+$ echo "Hello World!" > Home.md
+$ git add Home.md
+$ git commit -m 'Initial commit'
+```
+
+(3) Spin-up the Gollum container:
+
+```text
+$ docker pull genebarker/gollum
+$ docker run -d -p 80:80 -v ~/mywiki:/root/wiki genebarker/gollum --http
+```
 
 [GFM]:https://help.github.com/articles/github-flavored-markdown/
 [Gollum]:https://github.com/gollum/gollum
