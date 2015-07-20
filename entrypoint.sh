@@ -118,7 +118,7 @@ echo "To run as a rack application, place your config file in the repo,"
 echo "mount it, and set the RACK_APP environment variable to its name:"
 echo "   $ docker run -d -p 80:80 \\"
 echo "       -v /home/me/wiki:/root/wiki \\"
-echo "       -e RACK_APP=config.ru"
+echo "       -e RACK_APP=config.ru \\"
 echo "       genebarker/gollum --http"
 echo
 echo "To bypass script, just enter desired command, i.e.:"
