@@ -38,10 +38,16 @@ To run with strict HTTPS using your own keys, mount them, i.e.:
    (the cert's CN must match the FQDN)
 
 To run as a rack application, place your config file in the repo,
-mount it, and set the RACK_APP environment variable to its name:
+mount it, and set RACK_APP environment variable to its name, i.e.:
    $ docker run -d -p 80:80 \
        -v /home/me/wiki:/root/wiki \
        -e RACK_APP=config.ru \
+       genebarker/gollum --http
+
+To run using a time zone other than UTC, set the TIMEZONE environment
+variable to the desired time zone (TZ), i.e.:
+   $ docker run -d -p 80:80 \
+       -e TIMEZONE=America/Los_Angeles \
        genebarker/gollum --http
 
 To bypass script, just enter desired command, i.e.:
@@ -58,8 +64,7 @@ Key paths in the container:
 
 - This image uses GitHub Flavored Markdown ([GFM]).
 - For a rack application, see the example `config.ru`, and be sure to append its required packages and gems to the respective RUN commands in the `Dockerfile`.
-- To use the timezone settings of the host, mount the `localtime` and `timezone` files, i.e. on Debian hosts:
-    `-v /etc/localtime:/etc/localtime -v /etc/timezone:/etc/timezone`
+- See the [TZ Database] for the available values for the `$TIMEZONE` environment variable.
 
 ### Quick Start ###
 
@@ -90,3 +95,4 @@ $ docker run -d -p 80:80 -v ~/mywiki:/root/wiki genebarker/gollum --http
 [GFM]:https://help.github.com/articles/github-flavored-markdown/
 [Gollum]:https://github.com/gollum/gollum
 [HSTS]:http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security
+[TZ Database]:https://en.wikipedia.org/wiki/List_of_tz_database_time_zones

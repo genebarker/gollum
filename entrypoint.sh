@@ -9,21 +9,36 @@ SSLKEY="/etc/ssl/private/ssl-cert-snakeoil.key"
 SSLCERT="/etc/ssl/certs/ssl-cert-snakeoil.pem"
 
 if [ "$#" != "0" ]; then
+    # check time zone settings
+    if [ -z "$TIMEZONE" ]; then
+        # show current time zone and date
+        echo -n "Current default time zone: " && cat /etc/timezone
+        echo -n "Local Time is now        : " && date
+    else
+        # verify provided time zone exists
+        if [ ! -f "/usr/share/zoneinfo/$TIMEZONE" ]; then
+            echo "error: time zone ($TIMEZONE) does not exist."
+            exit 1
+        fi
+        # change to desired timezone
+        echo $TIMEZONE > /etc/timezone
+        dpkg-reconfigure -f noninteractive tzdata
+    fi
     CMD="$1"
     if [ "$CMD" == '--http' ]; then
         echo "run Gollum using plain HTTP..."
         # set HTTP proxy to gollum server
         sed -i "s/DocumentRoot \/var\/www\/html.*/ProxyPass \/ http:\/\/localhost:4567\/\n\tProxyPassReverse \/ http:\/\/localhost:4567\//" /etc/apache2/sites-available/000-default.conf
-	# enable proxy mod
+        # enable proxy mod
         a2enmod proxy_http
         # start apache
         apache2ctl start
         # consume 1st arg (the rest are gollum's)
         shift
-	# determine startup type
+        # determine startup type
         if [ -z "$RACK_APP" ]; then
             # start gollum using provided arg's
-	    cd $GROOT
+        cd $GROOT
             exec gollum "$@"
             exit
         else
@@ -57,9 +72,9 @@ if [ "$#" != "0" ]; then
         sed -i 's/SSLCipherSuite HIGH:!aNULL.*/SSLCipherSuite ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS/' /etc/apache2/mods-available/ssl.conf
         # set to redirect HTTP to HTTPS (HSTS Strict Transport Security)
         sed -i "s/DocumentRoot \/var\/www\/html.*/Redirect permanent \/ https:\/\/$FQDN\//" /etc/apache2/sites-available/000-default.conf
-	# enable SSL
+        # enable SSL
         a2enmod ssl
-	# set HTTPS proxy to gollum server
+        # set HTTPS proxy to gollum server
         sed -i "s/DocumentRoot \/var\/www\/html.*/ProxyPass \/ http:\/\/localhost:4567\/\n\tProxyPassReverse \/ http:\/\/localhost:4567\//" /etc/apache2/sites-available/default-ssl.conf
         # enable proxy mod
         a2enmod proxy_http
@@ -69,10 +84,10 @@ if [ "$#" != "0" ]; then
         apache2ctl start
         # consume 1st 2 arg's (the rest are gollum's)
         shift 2
-	# determine startup type
+        # determine startup type
         if [ -z "$RACK_APP" ]; then
             # start gollum using provided arg's
-	    cd $GROOT
+            cd $GROOT
             exec gollum "$@"
             exit
         else
@@ -115,10 +130,16 @@ echo
 echo "   (the cert's CN must match the FQDN)"
 echo
 echo "To run as a rack application, place your config file in the repo,"
-echo "mount it, and set the RACK_APP environment variable to its name:"
+echo "mount it, and set RACK_APP environment variable to its name, i.e.:"
 echo "   $ docker run -d -p 80:80 \\"
 echo "       -v /home/me/wiki:/root/wiki \\"
 echo "       -e RACK_APP=config.ru \\"
+echo "       genebarker/gollum --http"
+echo
+echo "To run using a time zone other than UTC, set the TIMEZONE environment"
+echo "variable to the desired time zone (TZ), i.e.:"
+echo "   $ docker run -d -p 80:80 \\"
+echo "       -e TIMEZONE=America/Los_Angeles \\"
 echo "       genebarker/gollum --http"
 echo
 echo "To bypass script, just enter desired command, i.e.:"
