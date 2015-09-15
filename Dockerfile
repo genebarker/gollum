@@ -9,7 +9,7 @@
 # commands below.
 #----------------------------------------------------------------------
 
-FROM debian:8.1
+FROM debian:8.2
 
 MAINTAINER Eugene F. Barker <genebarker@gmail.com>
 
