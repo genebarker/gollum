@@ -4,13 +4,13 @@ Gollum
 
 For usage info, just run the image without a command:
 
-```text
+```sh
 $ docker run --rm genebarker/gollum
 ```
 
 Which produces the following:
 
-```text
+```sh
 gollum - a Gollum webapp on Debian 8 Docker Container
 
 usage: genebarker/gollum [OPTION]
@@ -70,7 +70,7 @@ Key paths in the container:
 
 (1) Create a Git repository for your wiki:
 
-```text
+```sh
 $ cd
 $ mkdir mywiki
 $ cd mywiki
@@ -79,7 +79,7 @@ $ git init
 
 (2) Add a starter document to the repository *(optional)*:
 
-```text
+```sh
 $ echo "Hello World!" > Home.md
 $ git add Home.md
 $ git commit -m 'Initial commit'
@@ -87,7 +87,7 @@ $ git commit -m 'Initial commit'
 
 (3) Spin-up the Gollum container:
 
-```text
+```sh
 $ docker pull genebarker/gollum
 $ docker run -d -p 80:80 -v ~/mywiki:/root/wiki genebarker/gollum --http
 ```
