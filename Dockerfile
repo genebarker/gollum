@@ -22,8 +22,8 @@ RUN apt-get update && apt-get install -y \
     libz-dev \
     ruby \
     ruby-dev && \
-	apt-get clean && \
-	rm -rf /var/lib/apt/lists
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists
 
 # install gollum & GitHub Flavored Markdown
 RUN gem install gollum github-markdown

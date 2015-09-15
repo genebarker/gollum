@@ -94,5 +94,5 @@ $ docker run -d -p 80:80 -v ~/mywiki:/root/wiki genebarker/gollum --http
 
 [GFM]:https://help.github.com/articles/github-flavored-markdown/
 [Gollum]:https://github.com/gollum/gollum
-[HSTS]:http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security
+[HSTS]:https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security
 [TZ Database]:https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
