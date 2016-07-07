@@ -1,6 +1,45 @@
-Gollum
-------
-[Gollum] webapp on Debian 8 (Jessie) with support for strict HTTPS ([HSTS]).
+## Gollum
+
+[Gollum][1] webapp on Debian 8 (Jessie) with support for HTTP and strict HTTPS ([HSTS][2]).
+
+### Improvements
+
+This production proven image of Gollum just got a little better.. Enjoy!
+
+- upgraded OS to Debian 8.5
+- upgraded Gollum to 4.0.1
+- upgraded Github Flavored Markdown to 0.6.9
+- improved this readme
+
+## Quick Start
+
+1) Create a Git repository for your wiki:
+
+```sh
+$ cd
+$ mkdir mywiki
+$ cd mywiki
+$ git init
+```
+
+(2) Add a starter document to the repository *(optional)*:
+
+```sh
+$ echo "Hello World!" > Home.md
+$ git add Home.md
+$ git commit -m 'Initial commit'
+```
+
+(3) Spin-up the Gollum container:
+
+```sh
+$ docker pull genebarker/gollum
+$ docker run -d -p 80:80 -v ~/mywiki:/root/wiki genebarker/gollum --http
+```
+
+(4) Enjoy
+
+## How to Use
 
 For usage info, just run the image without a command:
 
@@ -60,39 +99,15 @@ Key paths in the container:
    /etc/ssl/certs/ssl-cert-snakeoil.pem    - Public SSL cert
 ```
 
-### Notes ###
+## Notes
 
-- This image uses GitHub Flavored Markdown ([GFM]).
+- This image uses GitHub Flavored Markdown ([GFM][3]).
 - For a rack application, see the example `config.ru`, and be sure to append its required packages and gems to the respective RUN commands in the `Dockerfile`.
-- See the [TZ Database] for the available values for the `$TIMEZONE` environment variable.
+- See the [TZ Database][4] for the available values for the `$TIMEZONE` environment variable.
 
 ### Quick Start ###
 
-(1) Create a Git repository for your wiki:
-
-```sh
-$ cd
-$ mkdir mywiki
-$ cd mywiki
-$ git init
-```
-
-(2) Add a starter document to the repository *(optional)*:
-
-```sh
-$ echo "Hello World!" > Home.md
-$ git add Home.md
-$ git commit -m 'Initial commit'
-```
-
-(3) Spin-up the Gollum container:
-
-```sh
-$ docker pull genebarker/gollum
-$ docker run -d -p 80:80 -v ~/mywiki:/root/wiki genebarker/gollum --http
-```
-
-[GFM]:https://help.github.com/articles/github-flavored-markdown/
-[Gollum]:https://github.com/gollum/gollum
-[HSTS]:https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security
-[TZ Database]:https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+[1]: https://github.com/gollum/gollum
+[2]: https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security
+[3]: https://guides.github.com/features/mastering-markdown/
+[4]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
