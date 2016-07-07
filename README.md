@@ -15,7 +15,7 @@ This production proven image of Gollum just got a little better.. Enjoy!
 
 1) Create a Git repository for your wiki:
 
-```sh
+```text
 $ cd
 $ mkdir mywiki
 $ cd mywiki
@@ -24,7 +24,7 @@ $ git init
 
 (2) Add a starter document to the repository *(optional)*:
 
-```sh
+```text
 $ echo "Hello World!" > Home.md
 $ git add Home.md
 $ git commit -m 'Initial commit'
@@ -32,7 +32,7 @@ $ git commit -m 'Initial commit'
 
 (3) Spin-up the Gollum container:
 
-```sh
+```text
 $ docker pull genebarker/gollum
 $ docker run -d -p 80:80 -v ~/mywiki:/root/wiki genebarker/gollum --http
 ```
@@ -43,13 +43,13 @@ $ docker run -d -p 80:80 -v ~/mywiki:/root/wiki genebarker/gollum --http
 
 For usage info, just run the image without a command:
 
-```sh
+```text
 $ docker run --rm genebarker/gollum
 ```
 
 Which produces the following:
 
-```sh
+```text
 gollum - a Gollum webapp on Debian 8 Docker Container
 
 usage: genebarker/gollum [OPTION]
@@ -104,8 +104,6 @@ Key paths in the container:
 - This image uses GitHub Flavored Markdown ([GFM][3]).
 - For a rack application, see the example `config.ru`, and be sure to append its required packages and gems to the respective RUN commands in the `Dockerfile`.
 - See the [TZ Database][4] for the available values for the `$TIMEZONE` environment variable.
-
-### Quick Start ###
 
 [1]: https://github.com/gollum/gollum
 [2]: https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security
